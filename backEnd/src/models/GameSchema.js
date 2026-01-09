@@ -2,7 +2,7 @@ import sequelize from "../db/connection.js";
 import { DataTypes } from "sequelize";
 import Player from "./PlayerSchema.js";
 
-const Game = sequelize.defin("game", {
+const Game = sequelize.define("game", {
   id: {
     primaryKey: true,
     type: DataTypes.INTEGER,
