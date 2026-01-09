@@ -5,12 +5,12 @@ const Round = sequelize.define("round", {
   id: {
     primaryKey: true,
     type: DataTypes.INTEGER,
-    autoIncrement: true
+    autoIncrement: true,
   },
   round_number: {
     type: DataTypes.INTEGER,
     defaultValue: 1,
-    allowNull: false
+    allowNull: false,
   }
 });
 
