@@ -2,7 +2,7 @@
   "name": "skc-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "src/server.js",
   "type": "module",
   "license": "AGPL-version-3.0",
   "private": false,
@@ -24,7 +24,7 @@
   },
   "contributors": [],
   "scripts": {
-    "dev": "node",
+    "dev": "nodemon",
     "test": ""
   },
   "dependencies": {
@@ -33,6 +33,7 @@
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "mysql2": "^3.16.0",
+    "nodemon": "^3.1.11",
     "sequelize": "^6.37.7"
   }
 }
