@@ -7,12 +7,10 @@ dotenv.config();
 const { DB_HOST, DB_PORT, DB_USERNAME, DB_PASSWORD, DB_DATABASE } =
   process.env;
 // console.log(process.env);
-console.log('***')
-console.log(DB_HOST);
 
 const sequelize = new Sequelize(DB_DATABASE, DB_USERNAME, DB_PASSWORD, {
   host: DB_HOST,
-  dialect: 'mysql',
+  dialect: "mysql",
   port: DB_PORT,
   logging: (q) => console.log(`Sequelize Query: ${q}`),
 });
