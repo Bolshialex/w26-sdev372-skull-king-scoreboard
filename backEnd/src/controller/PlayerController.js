@@ -37,3 +37,9 @@ export const createPlayer = async (req, res) => {
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
+export const deletePlayer = async (req, res) => {
+  try {
+    const { id } = req.body;
+  } catch (error) {}
+};
