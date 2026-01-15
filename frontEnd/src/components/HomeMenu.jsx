@@ -20,7 +20,7 @@ function HomeForm() {
           <button onClick={() => handleClick("player/create")}>
             Create New Player
           </button>
-          <button>Lookup Player</button>
+          <button onClick={() => handleClick("players")}>Lookup Player</button>
         </div>
       </div>
     </>
