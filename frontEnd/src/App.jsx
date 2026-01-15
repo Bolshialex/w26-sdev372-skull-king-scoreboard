@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import PlayerCreation from "./pages/PlayerCreation";
-import LookupPlayer from "./pages/LookupPlayer";
+import PlayerLookup from "./pages/PlayerLookup";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/player/create" element={<PlayerCreation />} />
-          <Route path="/players" element={<LookupPlayer />} />
+          <Route path="/players" element={<PlayerLookup />} />
         </Routes>
       </Router>
     </>

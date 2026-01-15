@@ -8,7 +8,7 @@ function PlayerCreation() {
         <h1>Player Creation</h1>
         <p>Insert Player Info</p>
       </div>
-      <div><PlayerCreationForm /></div>
+      <PlayerCreationForm />
     </div>
   );
 }
