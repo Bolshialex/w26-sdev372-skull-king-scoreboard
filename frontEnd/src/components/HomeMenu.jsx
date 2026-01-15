@@ -1,6 +1,12 @@
-import React from "react";
+import { Route, useNavigate } from "react-router-dom";
 
 function HomeForm() {
+  const navigate = useNavigate();
+
+  const handleClick = (route) => {
+    navigate(`/${route}`);
+  };
+
   return (
     <>
       <div>
@@ -11,8 +17,10 @@ function HomeForm() {
         <div>
           <button>Start New Game</button>
           <button>Continue Game</button>
-          <button>Create New Player</button>
-          <button>Lookup Player</button>
+          <button onClick={() => handleClick("player/create")}>
+            Create New Player
+          </button>
+          <button onClick={() => handleClick("players")}>Lookup Player</button>
         </div>
       </div>
     </>
