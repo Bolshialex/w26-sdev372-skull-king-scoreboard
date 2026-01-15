@@ -19,6 +19,21 @@ async function createPlayer(playerInfo) {
   }
 }
 
+async function getAllPlayers() {
+  try {
+    const res = await axios.get(`${API_URL}/players`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching Players:", error);
+    throw error;
+  }
+}
+
 export default {
   createPlayer,
+  getAllPlayers,
 };

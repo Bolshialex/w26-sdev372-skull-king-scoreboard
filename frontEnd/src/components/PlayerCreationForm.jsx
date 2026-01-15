@@ -7,7 +7,6 @@ function PlayerCreationForm() {
     last_name: "",
   });
 
-
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -15,7 +14,7 @@ function PlayerCreationForm() {
       ...prevData,
       [name]: value,
     }));
-  }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,13 +28,10 @@ function PlayerCreationForm() {
 
   return (
     <div>
-      <form className="game-form" onSubmit={handleSubmit}>
-        <div className="form-sub-container">
-          <label className="form-label" htmlFor="first_name">
-            First Name
-          </label>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="first_name">First Name</label>
           <input
-            className="form-input"
             name="first_name"
             id="first_name"
             value={formFields.first_name}
@@ -44,12 +40,9 @@ function PlayerCreationForm() {
           />
         </div>
 
-        <div className="form-sub-container">
-          <label className="form-label" htmlFor="last_name">
-            Last Name
-          </label>
+        <div>
+          <label htmlFor="last_name">Last Name</label>
           <input
-            className="form-input"
             name="last_name"
             id="last_name"
             value={formFields.last_name}
@@ -57,12 +50,12 @@ function PlayerCreationForm() {
             type="text"
           />
         </div>
-        <div className="form-btn-container-submit">
-          <button className="form-btn">Create Player</button>
+        <div>
+          <button>Create Player</button>
         </div>
       </form>
     </div>
-  )
+  );
 }
 
 export default PlayerCreationForm;
