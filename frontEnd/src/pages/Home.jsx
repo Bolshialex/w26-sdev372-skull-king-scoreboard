@@ -1,11 +1,10 @@
 import React from "react";
-import HomeForm from "../components/HomeForm";
+import HomeMenu from "../components/HomeMenu";
 
 function Home() {
   return (
     <div>
-      <p>This is Home</p>
-      <HomeForm />
+      <HomeMenu />
     </div>
   );
 }
