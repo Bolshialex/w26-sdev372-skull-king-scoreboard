@@ -76,3 +76,15 @@ export const editPlayer = async (req, res) => {
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
+export const getAllPlayers = async (req, res) => {
+  try {
+    const players = await Player.findAll({ where: { isActive: true } });
+
+    return res.status(200).json(players);
+  } catch (error) {
+    console.error("Error fetching players:", error);
+
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+};
