@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaRegTrashCan } from "react-icons/fa6";
+import gameFunctions from "../api/gameFunctions";
 import playerFunctions from "../api/playerFunctions";
 
 function GameCreationForm() {
@@ -39,15 +40,15 @@ function GameCreationForm() {
   };
 
   const handleFormSubmit = async (e) => {
-    e.perventDefault();
+    e.preventDefault();
 
     const playersArray = [];
     formFields.map((player) => {
       playersArray.push(Number(player.playerId));
     });
-
+    console.log({ numRounds, playersArray });
     try {
-      const res = await playerFunctions.createGame({
+      const res = await gameFunctions.createGame({
         numRounds,
         playersArray,
       });
@@ -113,8 +114,6 @@ function GameCreationForm() {
           </button>
         )}
       </div>
-      {/*Logic to add more sections for more players
-        As well as a limit of 8 players and a delete option*/}
 
       <div>
         <button>Submit</button>

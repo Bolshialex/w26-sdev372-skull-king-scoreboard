@@ -20,7 +20,7 @@ const Game = sequelize.define("game", {
     type: DataTypes.INTEGER,
     defaultValue: 10,
   },
-  Players: {
+  players: {
     type: DataTypes.JSON,
     allowNull: false,
   },

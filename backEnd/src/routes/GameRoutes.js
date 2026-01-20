@@ -1,18 +1,12 @@
 import { Router } from "express";
-import {
-  createGame, 
-  getGames,
-  getGame,
-  addRound,
-  getPlayerRound,
-} from "../controllers/GameController.js";
+import { createGame } from "../controllers/GameController.js";
 
 const gameRouter = Router();
 
-gameRouter.get("/game", getGames);
-gameRouter.get("/game/:id", getGame);
-gameRouter.get("/player-roud/:player_id/:roud_id", getPlayerRound);
+//gameRouter.get("/game", getGames);
+//gameRouter.get("/game/:id", getGame);
+//gameRouter.get("/player-round/:player_id/:round_id", getPlayerRound);
 gameRouter.post("/game", createGame);
-gameRouter.post("/round", addRound);
+//gameRouter.post("/round", addRound);
 
 export default gameRouter;

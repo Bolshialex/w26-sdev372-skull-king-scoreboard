@@ -9,12 +9,18 @@ export const createGame = async (req, res) => {
     const STARTING_ROUND = 1;
     const { players, rounds_needed } = req.body;
 
-    const game = await Game.create({ rounds_needed, players });
+    const game = await Game.create({
+      rounds_needed,
+      players,
+    });
 
     for (const player of players)
       await PlayerGame.create({ game_id: game.id, player_id: player });
 
-    const round = await Round.create({ game_id: game.id, round_number: STARTING_ROUND });
+    const round = await Round.create({
+      game_id: game.id,
+      round_number: STARTING_ROUND,
+    });
 
     return res
       .status(201)
