@@ -15,10 +15,6 @@ const Stats = sequelize.define("stats", {
     type: DataTypes.INTEGER,
     defaultValue: 0,
   },
-  win_percentage: {
-    type: DataTypes.FLOAT,
-    defaultValue: 0,
-  },
   bet_success_rate: {
     type: DataTypes.FLOAT,
     defaultValue: 0,
