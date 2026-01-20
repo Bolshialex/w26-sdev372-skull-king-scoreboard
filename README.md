@@ -22,3 +22,9 @@ rounds
 inserting round information as the game goes along to find a winner after the
 specified amount of rounds.
 - WireFrames
+
+# Sprint 2 Features to add
+- Verification for player creation -> send back to playercard on success
+- Clickable player -> takes to player page showing stats
+- Edit and delete player - Do not delete player, update isActive in database to false
+- Player lookup search/filter
