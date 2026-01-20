@@ -4,14 +4,14 @@ const { Player, Stats } = db;
 export const getPlayer = async (req, res) => {
   try {
     const { id } = req.params;
-    if (!id) return res.status(404).json({ message: "Cannot find player" });
+    if (!id)
+      return res.status(400).json({ message: "Player id doesn't exist" });
     const player = await Player.findByPk(id);
-
+    if (!player) return res.status(404).json({ message: "Cannot find player" });
     const playerStats = await Stats.findOne({
       where: { player_id: player.id },
     });
 
-    if (!player) return res.status(404).json({ message: "Cannot find player" });
     return res.status(200).json({ player, playerStats });
   } catch (error) {
     console.error("Error fetching player:", error);
@@ -41,7 +41,7 @@ export const createPlayer = async (req, res) => {
 export const deletePlayer = async (req, res) => {
   try {
     const { id } = req.body;
-    if (!id) return res.status(401).json({ message: "Cannot find player" });
+    if (!id) return res.status(400).json({ message: "Cannot find player" });
 
     const player = await Player.findByPk(id);
     if (!player) return res.status(401).json({ message: "Cannot find player" });
@@ -60,7 +60,8 @@ export const editPlayer = async (req, res) => {
     const { first_name, last_name } = req.body;
     const { id } = req.params;
 
-    if (!id) return res.status(401).json({ message: "Cannot find player" });
+    if (!id)
+      return res.status(400).json({ message: "Player id doesn't exist" });
 
     if (!first_name || !last_name)
       return res.status(400).json({ message: "Missing required fields" });
