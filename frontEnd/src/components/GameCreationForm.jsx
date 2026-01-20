@@ -1,6 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import gameFunctions from "../api/gameFunctions";
+import playerFunctions from "../api/playerFunctions";
 
 function GameCreationForm() {
+  const [players, setPlayers] = useState([]);
+
+  useEffect(() => {
+    async function fetchAllPlayers() {
+      try {
+        const data = await playerFunctions.getAllPlayers();
+        setPlayers(data);
+      } catch (error) {
+        console.error("Failed to load players:", error);
+      }
+    }
+    fetchAllPlayers();
+  }, []);
   return (
     <form>
       <div>
