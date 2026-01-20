@@ -1,4 +1,5 @@
 import React from "react";
+import GameCreationForm from "../components/GameCreationForm";
 
 function GameCreation() {
   return (
@@ -8,7 +9,7 @@ function GameCreation() {
       </div>
       <div>
         <p>Game Settings</p>
-        {/* Game Form goes here */}
+        <GameCreationForm />
       </div>
     </div>
   );
