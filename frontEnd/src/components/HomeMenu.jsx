@@ -15,7 +15,7 @@ function HomeForm() {
           <p>Choose and option</p>
         </div>
         <div>
-          <button>Start New Game</button>
+          <button onClick={() => handleClick("game")}>Start New Game</button>
           <button>Continue Game</button>
           <button onClick={() => handleClick("player/create")}>
             Create New Player
