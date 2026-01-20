@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { FaRegTrashCan } from "react-icons/fa6";
-import gameFunctions from "../api/gameFunctions";
 import playerFunctions from "../api/playerFunctions";
 
 function GameCreationForm() {
@@ -48,7 +47,7 @@ function GameCreationForm() {
     });
 
     try {
-      const res = await gameFunctions.createGame({
+      const res = await playerFunctions.createGame({
         numRounds,
         playersArray,
       });
