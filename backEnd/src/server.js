@@ -8,7 +8,7 @@ import gameRouter from "./routes/GameRoutes.js";
 
 dotenv.config();
 const PORT = 3056;
-const HOST = "209.38.154.66";
+const HOST = "0.0.0.0";
 const app = express();
 app.use(express());
 app.use(cors());
