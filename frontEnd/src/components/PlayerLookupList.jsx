@@ -18,6 +18,7 @@ function PlayerLookup() {
           <SearchBar 
             placeholder="Search players..."
             onSearch={setSearchTerm} 
+            ariaLabel="Filter players by name"
             // tells SearchBar to use setSearchTerm when onSearch is called
           /> 
           </div>

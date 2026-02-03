@@ -8,21 +8,16 @@ export function PlayersProvider({ children }) {
 
     const refreshPlayers = async () => {
         try {
-        const data = await playerFunctions.getAllPlayers();
-        setPlayers(data);
+            const data = await playerFunctions.getAllPlayers();
+            setPlayers(data);
         } catch (err) {
-        console.error("Failed to load players:", err);
+            console.error("Failed to load players:", err);
         }
     };
 
     useEffect(() => {
         async function fetchAllPlayers() {
-            try {
-                const data = await playerFunctions.getAllPlayers();
-                setPlayers(data);
-            } catch (error) {
-                console.error("Failed to load players:", error);
-            }
+            refreshPlayers();
         }
         fetchAllPlayers();
     }, []);

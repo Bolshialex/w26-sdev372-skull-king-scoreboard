@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function SearchBar({ placeholder, onSearch }) {
+function SearchBar({ placeholder, onSearch, ariaLabel = "Search" }) {
     const [query, setQuery] = useState("");
 
     const handleInputChange = (e) => {
@@ -15,6 +15,7 @@ function SearchBar({ placeholder, onSearch }) {
             placeholder={placeholder}
             value={query}
             onChange={handleInputChange}
+            aria-label={ariaLabel}
         />
     );
 }
