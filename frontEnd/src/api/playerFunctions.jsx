@@ -4,6 +4,7 @@ const API_URL = "http://209.38.154.66:3056";
 async function createPlayer(playerInfo) {
   const { first_name, last_name } = playerInfo;
   try {
+    console.log(API_URL);
     const res = await axios.post(
       `${API_URL}/players`,
       {
