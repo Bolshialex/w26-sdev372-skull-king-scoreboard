@@ -37,13 +37,14 @@ function PlayerGameHistory() {
             ) : (
                 <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                     {games.map((gameItem) => {
-                        const game = gameItem.game; // game details are inside the game property due to the include
+                        const game = gameItem.game;
+                        if (!game) return null; // Skip if game data is missing
                         return (
                             <div key={gameItem.id} style={{ border: "1px solid #ccc", padding: "10px", borderRadius: "5px" }}>
-                                <p><strong>Date:</strong> {new Date(game.data_played).toLocaleDateString()}</p>
-                                <p><strong>Game ID:</strong> {game.id}</p>
-                                <p><strong>Rounds:</strong> {game.rounds_needed}</p>
-                                <p><strong>Status:</strong> {game.finished ? "Finished" : "In Progress"}</p>
+                                <p><strong>Date:</strong> {game?.data_played ? new Date(game.data_played).toLocaleDateString() : "Unknown Date"}</p>
+                                <p><strong>Game ID:</strong> {game?.id ?? "N/A"}</p>
+                                <p><strong>Rounds:</strong> {game?.rounds_needed ?? "Unknown"}</p>
+                                <p><strong>Status:</strong> {game?.finished === true ? "Finished" : game?.finished === false ? "In Progress" : "Unknown"}</p>
                             </div>
                         );
                     })}
