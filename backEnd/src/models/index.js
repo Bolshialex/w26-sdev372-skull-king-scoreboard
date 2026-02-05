@@ -32,7 +32,7 @@ PlayerRound.belongsTo(Player, {
 Game.hasMany(PlayerGame, {
   foreignKey: "game_id",
 });
-Round.belongsTo(Game, {
+PlayerGame.belongsTo(Game, {
   foreignKey: "game_id",
 });
 
