@@ -33,7 +33,37 @@ async function getAllPlayers() {
   }
 }
 
+async function getPlayer(id) {
+  try {
+    const res = await axios.get(`${API_URL}/players/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching Player:", error);
+    throw error;
+  }
+}
+
+async function getPlayerGames(id) {
+  try {
+    const res = await axios.get(`${API_URL}/players/${id}/games`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching Player Games:", error);
+    throw error;
+  }
+}
+
 export default {
   createPlayer,
   getAllPlayers,
+  getPlayer,
+  getPlayerGames,
 };

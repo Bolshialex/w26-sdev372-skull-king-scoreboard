@@ -5,12 +5,14 @@ import {
   createPlayer,
   editPlayer,
   deletePlayer,
+  getPlayerGames,
 } from "../controllers/PlayerController.js";
 
 const PlayerRouter = Router();
 
 PlayerRouter.get("/players", getAllPlayers);
 PlayerRouter.get("/players/:id", getPlayer);
+PlayerRouter.get("/players/:id/games", getPlayerGames);
 PlayerRouter.post("/players", createPlayer);
 PlayerRouter.put("/players/:id", editPlayer);
 PlayerRouter.delete("/players/:id", deletePlayer);

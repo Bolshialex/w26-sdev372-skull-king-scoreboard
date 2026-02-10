@@ -12,7 +12,7 @@ function HomeForm() {
       <div>
         <div>
           <h1>Skull-King ScoreBoard</h1>
-          <p>Choose and option</p>
+          <p>Choose an option</p>
         </div>
         <div>
           <button onClick={() => handleClick("game")}>Start New Game</button>

@@ -1,11 +1,16 @@
 import { useState } from "react";
 import playerFunctions from "../api/playerFunctions";
+import { usePlayers } from "../context/PlayersContext";
 
 function PlayerCreationForm() {
   const [formFields, setFormFields] = useState({
     first_name: "",
     last_name: "",
   });
+
+  const {refreshPlayers } = usePlayers();
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,11 +23,19 @@ function PlayerCreationForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setMessage("");
 
     try {
       await playerFunctions.createPlayer(formFields);
+      await refreshPlayers();
+      setMessage(`Player profile for ${formFields.first_name} ${formFields.last_name} created successfully!`);
+      setFormFields({ first_name: "", last_name: "" });
     } catch (error) {
-      console.error("Error creating game:", error);
+      console.error("Error creating player:", error);
+      setMessage(`Failed to create player ${formFields.first_name} ${formFields.last_name}. Error: ${error.message}`);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -51,8 +64,9 @@ function PlayerCreationForm() {
           />
         </div>
         <div>
-          <button>Create Player</button>
+          <button disabled={loading}>{loading ? 'Creating player...' : 'Create Player'}</button>
         </div>
+        {message && <p>{message}</p>}
       </form>
     </div>
   );

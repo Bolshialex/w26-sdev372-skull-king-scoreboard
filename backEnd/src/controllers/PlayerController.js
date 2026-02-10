@@ -1,5 +1,28 @@
 import db from "../models/index.js";
-const { Player, Stats } = db;
+const { Player, Stats, PlayerGame, Game } = db;
+
+export const getPlayerGames = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!id) return res.status(400).json({ message: "Missing player ID" });
+
+    const playerGames = await PlayerGame.findAll({
+      where: { player_id: id },
+      include: [
+        {
+          model: Game,
+        },
+      ],
+      order: [[Game, "data_played", "DESC"]], // Sort by newest first
+    });
+
+    return res.status(200).json(playerGames);
+  } catch (error) {
+    console.error("Error fetching player games:", error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
 
 export const getPlayer = async (req, res) => {
   try {

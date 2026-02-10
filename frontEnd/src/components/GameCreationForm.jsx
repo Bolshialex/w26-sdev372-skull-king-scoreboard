@@ -1,25 +1,14 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaRegTrashCan } from "react-icons/fa6";
 import gameFunctions from "../api/gameFunctions";
-import playerFunctions from "../api/playerFunctions";
+import { usePlayers } from "../context/PlayersContext";
+
 
 function GameCreationForm() {
-  const [players, setPlayers] = useState([]);
+  const { players } = usePlayers();
   const [formFields, setFormFields] = useState([{ playerId: "" }]);
   const [playerCount, setPlayerCount] = useState(2);
   const [numRounds, setNumRounds] = useState(1);
-
-  useEffect(() => {
-    async function fetchAllPlayers() {
-      try {
-        const data = await playerFunctions.getAllPlayers();
-        setPlayers(data);
-      } catch (error) {
-        console.error("Failed to load players:", error);
-      }
-    }
-    fetchAllPlayers();
-  }, []);
 
   const handleFormChange = (e, index) => {
     const data = [...formFields];

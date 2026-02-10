@@ -1,40 +1,41 @@
-import { useEffect, useState } from "react";
-import playerFunctions from "../api/playerFunctions";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { usePlayers } from "../context/PlayersContext";
+import SearchBar from "./SearchBar";
 
 function PlayerLookup() {
-  const [players, setPlayers] = useState([]);
-  useEffect(() => {
-    async function fetchPlayers() {
-      try {
-        const data = await playerFunctions.getAllPlayers();
-        setPlayers(data);
-      } catch (error) {
-        console.error("Failed to load players:", error);
-      }
-    }
+  const { players } = usePlayers();
+  const [searchTerm, setSearchTerm] = useState("");
 
-    fetchPlayers();
-  }, []);
+  const navigate = useNavigate();
+
+  const filteredPlayers = players.filter((player) =>
+    `${player.first_name} ${player.last_name}`
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div>
-          <div>
-            <input
-              type="text"           
-              placeholder="Search Players"
-            />
-          </div>
-          <div>
-            {players.map((player) => (
-              <button key={player.id}>
-                <p>Player</p>
-                <p>
-                  {player.first_name} {player.last_name}
-                </p>
-              </button>
-            ))}
-          </div>
-        </div>
+      <div>
+        <SearchBar
+          placeholder="Search players..."
+          onSearch={setSearchTerm}
+          ariaLabel="Filter players by name"
+        // tells SearchBar to use setSearchTerm when onSearch is called
+        />
+      </div>
+      <div>
+        {filteredPlayers.map((player) => (
+          <button key={player.id} onClick={() => navigate(`/players/${player.id}/games`)}>
+            <p>Player</p>
+            <p>
+              {player.first_name} {player.last_name}
+            </p>
+          </button>
+        ))}
+      </div>
+    </div>
   )
 }
 
