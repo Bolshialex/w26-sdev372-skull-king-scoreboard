@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URL = "http://localhost:3056";
+const API_URL = "";
 
 async function createGame(gameInfo) {
   const { playersArray, numRounds } = gameInfo;
