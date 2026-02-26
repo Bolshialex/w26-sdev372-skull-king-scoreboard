@@ -1,4 +1,5 @@
-import { useState, useNavigate } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaRegTrashCan } from "react-icons/fa6";
 import gameFunctions from "../api/gameFunctions";
 import { usePlayers } from "../context/PlayersContext";
