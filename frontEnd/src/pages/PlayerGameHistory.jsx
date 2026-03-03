@@ -7,6 +7,7 @@ function PlayerGameHistory() {
     const navigate = useNavigate();
     const [games, setGames] = useState([]);
     const [player, setPlayer] = useState(null);
+    const [stats, setStats] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -14,8 +15,10 @@ function PlayerGameHistory() {
             try {
                 const gamesData = await playerFunctions.getPlayerGames(id);
                 const playerData = await playerFunctions.getPlayer(id);
+                const statsData = await playerFunctions.getPlayerStats(id);
                 setGames(gamesData);
                 setPlayer(playerData.player);
+                setStats(statsData);
             } catch (error) {
                 console.error("Error loading data", error);
             } finally {
@@ -29,9 +32,19 @@ function PlayerGameHistory() {
 
     return (
         <div className="container">
+            <h1>{player ? `${player.first_name} ${player.last_name}` : "Player"}</h1>
             <button onClick={() => navigate(-1)} style={{ marginBottom: "20px" }}>Back</button>
-            <h2>Game History: {player ? `${player.first_name} ${player.last_name}` : "Player"}</h2>
-
+            {stats && (
+                <section className="stats">
+                    <h2>Player Stats</h2>
+                    <p><strong>Total Games:</strong> {stats.total_games}</p>
+                    <p><strong>Success Rate:</strong> {stats.success_rate}</p>
+                    <p><strong>Games Won:</strong> {stats.wins}</p>
+                    <p><strong>Games Lost:</strong> {stats.losses}</p>
+                </section>)
+            }
+            <section className="game-history">
+            <h2>Game History</h2>
             {games.length === 0 ? (
                 <p>No games played yet.</p>
             ) : (
@@ -50,6 +63,7 @@ function PlayerGameHistory() {
                     })}
                 </div>
             )}
+        </section>
         </div>
     );
 }

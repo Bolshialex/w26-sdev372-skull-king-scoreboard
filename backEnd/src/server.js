@@ -15,8 +15,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 await db.sequelize.sync();
 
-app.use("/", PlayerRouter);
-app.use("/", gameRouter);
+app.use("/api", PlayerRouter);
+app.use("/api", gameRouter);
 
 app.listen(PORT, () => {
   console.log(`Server listening at http://localhost:${PORT}`.bgYellow);

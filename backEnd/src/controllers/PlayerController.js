@@ -114,3 +114,26 @@ export const getAllPlayers = async (req, res) => {
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
+export const getPlayerStats = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!id) return res.status(400).json({ message: "Missing player ID" });
+
+    const playerStats = await Stats.findOne({
+      where: { player_id: id }
+    });
+
+    const playerStatsData = {
+      total_games: playerStats.games_played,
+      success_rate: playerStats.bet_success_rate,
+      wins: playerStats.wins,
+      losses: playerStats.losses
+    };
+
+    return res.status(200).json(playerStatsData);
+  } catch (error) {
+    console.error("Error fetching player stats:", error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+};
