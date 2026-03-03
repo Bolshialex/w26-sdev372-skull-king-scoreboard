@@ -9,7 +9,7 @@ export default defineConfig({
     forbidOnly: !!process.env.CI,
     retries: 0,
     use: {
-        baseURL: "http://localhost:5173",
+        baseURL: "http://localhost:80",
         trace: "on-first-retry",
     },
 
@@ -22,7 +22,7 @@ export default defineConfig({
 
     webServer: {
         command: "npm run dev",
-        url: "http://localhost:5173",
+        url: "http://localhost:80",
         reuseExistingServer: !process.env.CI,
         timeout: 15_000,
     },
