@@ -8,7 +8,7 @@
     "frontEnd"
   ],
   "scripts": {
-    "test": "npm test --workspaces --if-present",
+    "test": "npm run e2e -w frontEnd && npm test --workspaces --if-present",
     "test:backend": "npm test -w backEnd",
     "test:frontend": "npm test -w frontEnd"
   },
