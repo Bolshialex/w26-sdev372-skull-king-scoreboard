@@ -32,19 +32,35 @@ services:
     depends_on:
       - backend
 
+  db-test:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: 'skc-Dan-Al123!@#'
+      MYSQL_DATABASE: skull_king_test
+    volumes:
+      - db_test_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   test-runner:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile.test
+    volumes:
+      - ./frontEnd/tests:/app/frontEnd/tests
+      - ./backEnd/tests:/app/backEnd/tests
     environment:
-      DB_HOST: db
+      DB_HOST: db-test
       DB_PORT: 3306
       DB_USERNAME: root
       DB_PASSWORD: 'skc-Dan-Al123!@#'
-      DB_DATABASE: skull_king
+      DB_DATABASE: skull_king_test
       NODE_ENV: test
     depends_on:
-      db:
+      db-test:
         condition: service_healthy
       backend:
         condition: service_started
@@ -55,3 +71,4 @@ services:
 
 volumes:
   db_data:
+  db_test_data:
