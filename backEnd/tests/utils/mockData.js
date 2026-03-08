@@ -51,6 +51,26 @@ export const playerRounds = [
     round_score: 15,
     bonus_points: 5,
     score: 20
+  },
+  {
+    id: 303,
+    round_id: 202,
+    player_id: 1,
+    bid: 3,
+    tricks_won: 3,
+    round_score: 25,
+    bonus_points: 5,
+    score: 60
+  },
+  {
+    id: 304,
+    round_id: 202,
+    player_id: 2,
+    bid: 2,
+    tricks_won: 2,
+    round_score: 20,
+    bonus_points: 10,
+    score: 50
   }
 ];
 
