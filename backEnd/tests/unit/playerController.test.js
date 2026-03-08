@@ -49,7 +49,7 @@ describe('Player Controller', () => {
                     ...pg,
                     Game: games.find(g => g.id === pg.game_id)
                 }))
-                .sort((a, b) => new Date(b.Game.data_played) - new Date(a.Game.data_played));
+                .sort((a, b) => new Date(b.Game.date_played) - new Date(a.Game.date_played));
 
             const spy = vi.spyOn(PlayerGame, 'findAll').mockResolvedValue(expectedData);
 
@@ -63,7 +63,7 @@ describe('Player Controller', () => {
                             model: Game,
                         }),
                     ]),
-                    order: [[Game, "data_played", "DESC"]],
+                    order: [[Game, "date_played", "DESC"]],
                 })
             );
             
@@ -92,7 +92,7 @@ describe('Player Controller', () => {
                             model: Game,
                         }),
                     ]),
-                    order: [[Game, "data_played", "DESC"]],
+                    order: [[Game, "date_played", "DESC"]],
                 })
             );
 
