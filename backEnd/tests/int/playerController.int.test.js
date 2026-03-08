@@ -6,7 +6,6 @@ import db from "../../src/models/index.js";
 const { Player, Stats } = db;
 
 beforeAll(async () => await db.sequelize.sync({ force: true }));
-afterAll(async () => await db.sequelize.close());
 
 describe("POST /api/players", () => {
   it("creates a player and stats", async () => {

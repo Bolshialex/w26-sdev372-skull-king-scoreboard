@@ -10,7 +10,20 @@ beforeAll(async () => {
     await Player.create({ first_name: "John", last_name: "Doe" });
     await Player.create({ first_name: "Jane", last_name: "Doe" });
 });
-afterAll(async () => await db.sequelize.close());
+
+describe("GET /api/game", () => {
+    it.todo("returns all games");
+});
+
+describe("GET /api/game/:id", () => {
+    it.todo("returns a game by id");
+    it.todo("returns 404 if game not found");
+});
+
+describe("GET /api/player-round/:player_id/:round_id", () => {
+    it.todo("returns player round data");
+    it.todo("returns 404 if not found");
+});
 
 describe("POST /api/game", () => {
     it("creates a game and returns 201", async () => {
