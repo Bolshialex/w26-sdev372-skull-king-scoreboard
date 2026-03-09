@@ -1,0 +1,6 @@
+/* Player Lookup Page */
+.player-lookup-page {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-md);
+}

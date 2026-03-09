@@ -1,11 +1,13 @@
-import { useState, useNavigate } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaRegTrashCan } from "react-icons/fa6";
 import gameFunctions from "../api/gameFunctions";
 import { usePlayers } from "../context/PlayersContext";
+import "./GameCreationForm.css";
 
 function GameCreationForm() {
   const { players } = usePlayers();
-  const [formFields, setFormFields] = useState([{ playerId: "" }]);
+  const [formFields, setFormFields] = useState([{ playerId: "" }, { playerId: "" }]);
   const [playerCount, setPlayerCount] = useState(2);
   const [numRounds, setNumRounds] = useState(1);
   const navigate = useNavigate();
@@ -16,16 +18,18 @@ function GameCreationForm() {
     setFormFields(data);
   };
   const handleAddPlayer = () => {
-    setPlayerCount(playerCount + 1);
-    setFormFields([...formFields, { playerId: "" }]);
+      setPlayerCount(playerCount + 1);
+      setFormFields([...formFields, { playerId: "" }]);
   };
+
   const handleRoundChange = (e) => {
     setNumRounds(Number(e.target.value));
   };
 
-  const handleDeleteBtn = () => {
-    setPlayerCount(playerCount - 1);
-    formFields.pop();
+  const handleDeleteBtn = (index) => {
+      setPlayerCount(playerCount - 1);
+      const data = formFields.filter((_, i) => i !== index);
+      setFormFields(data);
   };
 
   const handleFormSubmit = async (e) => {
@@ -53,8 +57,8 @@ function GameCreationForm() {
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
-      <div>
+    <form className="game-form" onSubmit={handleFormSubmit}>
+      <div className="form-group">
         <label htmlFor="rounds">Number of Rounds</label>
         <select
           name="rounds"
@@ -70,9 +74,9 @@ function GameCreationForm() {
         </select>
       </div>
       {formFields.map((form, index) => (
-        <div key={index}>
+        <div className="form-group" key={index}>
           <label htmlFor={`playerId-${index}`}>Player {index + 1}</label>
-          <div>
+          <div className="player-row">
             <select
               name={`playerId-${index}`}
               id={`playerId-${index}`}
@@ -87,7 +91,7 @@ function GameCreationForm() {
               ))}
             </select>
             {index > 1 ? (
-              <FaRegTrashCan className="trash-icon" onClick={handleDeleteBtn} />
+              <FaRegTrashCan className="trash-icon" onClick={() => handleDeleteBtn(index)} />
             ) : (
               <></>
             )}
@@ -98,14 +102,14 @@ function GameCreationForm() {
         {playerCount > 8 ? (
           <></>
         ) : (
-          <button className="add-btn" type="button" onClick={handleAddPlayer}>
+          <button className="btn btn--small" type="button" onClick={handleAddPlayer}>
             +
           </button>
         )}
       </div>
 
       <div>
-        <button>Submit</button>
+        <button className="btn btn--primary">Submit</button>
       </div>
     </form>
   );

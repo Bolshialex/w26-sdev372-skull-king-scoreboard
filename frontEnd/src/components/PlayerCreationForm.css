@@ -1,0 +1,4 @@
+/* Player Creation Form Component */
+.player-form .form-actions {
+    margin-top: var(--space-md);
+}

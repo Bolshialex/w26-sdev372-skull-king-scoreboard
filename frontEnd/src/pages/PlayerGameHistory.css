@@ -1,0 +1,28 @@
+/* Player Game History Page */
+.player-history-page {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-md);
+}
+
+.player-history-page .stats p {
+    margin-bottom: var(--space-xs);
+}
+
+.player-history-page .stats strong {
+    color: var(--color-text);
+}
+
+.game-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.game-card p {
+    margin-bottom: var(--space-xs);
+}
+
+.game-card strong {
+    color: var(--color-text);
+}

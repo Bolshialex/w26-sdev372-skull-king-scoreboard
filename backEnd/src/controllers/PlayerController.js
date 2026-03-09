@@ -13,7 +13,7 @@ export const getPlayerGames = async (req, res) => {
           model: Game,
         },
       ],
-      order: [[Game, "data_played", "DESC"]], // Sort by newest first
+      order: [[Game, "date_played", "DESC"]], // Sort by newest first
     });
 
     return res.status(200).json(playerGames);
@@ -35,7 +35,7 @@ export const getPlayer = async (req, res) => {
     const playerStats = await Stats.findOne({
       where: { player_id: player.id },
     });
-    if (!playerStats) return res.status(404).json({ messaage: "Cannot find player stats"})
+    if (!playerStats) return res.status(404).json({ message: "Cannot find player stats"})
 
     return res.status(200).json({ player, playerStats });
   } catch (error) {
@@ -111,6 +111,31 @@ export const getAllPlayers = async (req, res) => {
   } catch (error) {
     console.error("Error fetching players:", error);
 
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+export const getPlayerStats = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!id) return res.status(400).json({ message: "Missing player ID" });
+
+    const playerStats = await Stats.findOne({
+      where: { player_id: id }
+    });
+
+    if (!playerStats) return res.status(404).json({ message: "Cannot find player stats" });
+
+    const playerStatsData = {
+      total_games: playerStats.games_played,
+      success_rate: playerStats.bet_success_rate,
+      wins: playerStats.wins,
+      losses: playerStats.losses
+    };
+
+    return res.status(200).json(playerStatsData);
+  } catch (error) {
+    console.error("Error fetching player stats:", error);
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };

@@ -1,0 +1,233 @@
+/* ===================================================
+   SKULL KING SCOREBOARD — Global Styles
+   =================================================== */
+
+/* --- Design Tokens --- */
+:root {
+    /* Colors */
+    --color-bg: #f7f8fc;
+    --color-surface: #ffffff;
+    --color-border: #e1e4ed;
+    --color-text: #2d3436;
+    --color-text-muted: #636e72;
+    --color-accent: #a29bfe;
+    --color-accent-hover: #877efc;
+    --color-danger: #ff7675;
+    --color-success: #55efc4;
+
+    /* Typography */
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    --font-size-sm: 0.85rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 1.75rem;
+    --font-size-xxl: 2.25rem;
+
+    /* Spacing */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-xxl: 3rem;
+
+    /* Borders */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+}
+
+/* --- Reset --- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 100%;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* --- Typography --- */
+h1,
+h2,
+h3 {
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: var(--font-size-xxl);
+}
+
+h2 {
+    font-size: var(--font-size-xl);
+}
+
+h3 {
+    font-size: var(--font-size-lg);
+}
+
+p {
+    color: var(--color-text-muted);
+}
+
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+}
+
+/* --- Layout Utilities --- */
+.container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: var(--space-lg) var(--space-md);
+}
+
+.page-header {
+    margin-bottom: var(--space-xl);
+}
+
+.page-header p {
+    margin-top: var(--space-xs);
+}
+
+.section-title {
+    margin-bottom: var(--space-md);
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    padding: var(--space-sm) var(--space-md);
+    font-size: var(--font-size-base);
+    font-family: var(--font-family);
+    font-weight: 500;
+    color: var(--color-text);
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.btn:hover {
+    background: var(--color-surface);
+    border-color: var(--color-accent);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn--primary {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: #fff;
+}
+
+.btn--primary:hover {
+    background: var(--color-accent-hover);
+}
+
+.btn--small {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: var(--font-size-sm);
+}
+
+.btn--danger {
+    color: var(--color-danger);
+    border-color: var(--color-danger);
+}
+
+.btn--danger:hover {
+    background: var(--color-danger);
+    color: #fff;
+}
+
+/* --- Forms --- */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-md);
+}
+
+.form-group label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="search"],
+select {
+    padding: var(--space-sm) var(--space-md);
+    font-size: var(--font-size-base);
+    font-family: var(--font-family);
+    color: var(--color-text);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="search"]:focus,
+select:focus {
+    border-color: var(--color-accent);
+}
+
+/* --- Cards --- */
+.card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+}
+
+/* --- Utility --- */
+.text-muted {
+    color: var(--color-text-muted);
+}
+
+.mt-sm {
+    margin-top: var(--space-sm);
+}
+
+.mt-md {
+    margin-top: var(--space-md);
+}
+
+.mb-md {
+    margin-bottom: var(--space-md);
+}
+
+.mb-lg {
+    margin-bottom: var(--space-lg);
+}
+
+/* --- Message / Feedback --- */
+.message {
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    margin-top: var(--space-md);
+}

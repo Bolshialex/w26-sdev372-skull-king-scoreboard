@@ -1,0 +1,20 @@
+/* Home Menu Component */
+.home-menu {
+    text-align: center;
+}
+
+.home-menu h1 {
+    margin-bottom: var(--space-xs);
+}
+
+.home-menu p {
+    margin-bottom: var(--space-xl);
+}
+
+.home-menu__nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    max-width: 280px;
+    margin: 0 auto;
+}

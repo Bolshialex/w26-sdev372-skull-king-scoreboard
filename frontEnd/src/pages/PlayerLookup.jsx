@@ -1,10 +1,11 @@
 import React from "react";
 import PlayerLookupList from '../components/PlayerLookupList';
+import "./PlayerLookup.css";
 
 function PlayerLookup() {
   return (
-    <div>
-      <div>
+    <div className="player-lookup-page">
+      <div className="page-header">
         <h1>All Players</h1>
       </div>
       <PlayerLookupList />

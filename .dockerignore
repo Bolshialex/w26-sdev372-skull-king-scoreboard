@@ -1,0 +1,4 @@
+node_modules
+backEnd/node_modules
+frontEnd/node_modules
+frontEnd/test_results

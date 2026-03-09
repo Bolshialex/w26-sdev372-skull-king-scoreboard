@@ -1,6 +1,7 @@
 import { useState } from "react";
 import playerFunctions from "../api/playerFunctions";
 import { usePlayers } from "../context/PlayersContext";
+import "./PlayerCreationForm.css";
 
 function PlayerCreationForm() {
   const [formFields, setFormFields] = useState({
@@ -8,7 +9,7 @@ function PlayerCreationForm() {
     last_name: "",
   });
 
-  const {refreshPlayers } = usePlayers();
+  const { refreshPlayers } = usePlayers();
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
@@ -40,9 +41,9 @@ function PlayerCreationForm() {
   };
 
   return (
-    <div>
+    <div className="player-form">
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="form-group">
           <label htmlFor="first_name">First Name</label>
           <input
             name="first_name"
@@ -53,7 +54,7 @@ function PlayerCreationForm() {
           />
         </div>
 
-        <div>
+        <div className="form-group">
           <label htmlFor="last_name">Last Name</label>
           <input
             name="last_name"
@@ -63,10 +64,10 @@ function PlayerCreationForm() {
             type="text"
           />
         </div>
-        <div>
-          <button disabled={loading}>{loading ? 'Creating player...' : 'Create Player'}</button>
+        <div className="form-actions">
+          <button className="btn btn--primary" disabled={loading}>{loading ? 'Creating player...' : 'Create Player'}</button>
         </div>
-        {message && <p>{message}</p>}
+        {message && <p className="message">{message}</p>}
       </form>
     </div>
   );
