@@ -1,8 +1,9 @@
 import HomeMenu from "../components/HomeMenu";
+import "./Home.css";
 
 function Home() {
   return (
-    <div>
+    <div className="home-page">
       <HomeMenu />
     </div>
   );

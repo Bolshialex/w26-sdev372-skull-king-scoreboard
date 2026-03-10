@@ -1,0 +1,8 @@
+/* Game Page */
+.game-page .title {
+    margin-bottom: var(--space-xs);
+}
+
+.game-page .title__info {
+    color: var(--color-text-muted);
+}

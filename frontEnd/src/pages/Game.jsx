@@ -1,13 +1,12 @@
 import { useLocation } from "react-router-dom";
+import "./Game.css";
 
 function Game() {
   const location = useLocation();
   const { round_info, game_info } = location.state;
 
-  // console.log(round_info);
-  // console.log(game_info);
   return (
-    <div className="container">
+    <div className="container game-page">
       <div>
         <h1 className="title">Skull-King Counter</h1>
         <p className="title__info">

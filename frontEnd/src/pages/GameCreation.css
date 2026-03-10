@@ -1,0 +1,6 @@
+/* Game Creation Page */
+.game-creation-page {
+    max-width: 540px;
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-md);
+}

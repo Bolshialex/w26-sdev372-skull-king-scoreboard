@@ -1,0 +1,6 @@
+/* Player Creation Page */
+.player-creation-page {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-md);
+}

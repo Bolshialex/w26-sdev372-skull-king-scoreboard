@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URL = "";
+const API_URL = "/api";
 
 async function createPlayer(playerInfo) {
   const { first_name, last_name } = playerInfo;
@@ -61,9 +61,24 @@ async function getPlayerGames(id) {
   }
 }
 
+async function getPlayerStats(id) {
+      try {
+        const res = await axios.get(`${API_URL}/players/${id}/stats`, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        return res.data;
+      } catch (error) {
+        console.error("Error fetching Player Stats:", error);
+        throw error;
+      }
+    }
+
 export default {
   createPlayer,
   getAllPlayers,
   getPlayer,
   getPlayerGames,
+  getPlayerStats
 };

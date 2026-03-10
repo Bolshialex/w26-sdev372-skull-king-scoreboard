@@ -1,9 +1,6 @@
 import db from "../models/index.js";
-import PlayerRound from "../models/PlayerRoundSchema.js";
 
-const Game = db.Game;
-const Round = db.Round;
-const PlayerGame = db.PlayerGame;
+const { Game, PlayerGame, Round, PlayerRound } = db;
 
 export const createGame = async (req, res) => {
   try {
@@ -29,7 +26,7 @@ export const createGame = async (req, res) => {
   } catch (error) {
     console.error("Error creating game:", error);
 
-    return res.status(500).json({ messcage: "Internal Server Error" });
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
