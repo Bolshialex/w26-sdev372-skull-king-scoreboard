@@ -36,5 +36,3 @@
 - Clickable player -> takes to player page showing stats
 - Edit and delete player - Do not delete player, update isActive in database to false
 - Player lookup search/filter
-
-# Testing CI/CD
