@@ -13,3 +13,9 @@ jobs:
       - uses: actions/checkout@v4
       - run: docker compose run --rm backend npm test
 
+  frontend-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker compose run --rm frontend npm test
+
