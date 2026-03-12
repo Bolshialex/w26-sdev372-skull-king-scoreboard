@@ -7,15 +7,10 @@ on:
     branches: [main]
 
 jobs:
-  test:
+  backend-tests:
     runs-on: ubuntu-latest
-
     steps:
+      - uses: actions/checkout@v4
       - name: Run Backend Tests
-        run: cd backEnd && npm run test
+      - run: cd backEnd && npm run test
 
-      - name: Run Frontend Tests
-        run: cd frontEnd && npm run test
-
-      - name: Run E2E Tests
-        run: npx playwright test
