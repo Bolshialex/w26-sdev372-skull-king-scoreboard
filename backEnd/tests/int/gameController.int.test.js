@@ -6,7 +6,15 @@ const { Player, Game, PlayerGame, Round, PlayerRound } = db;
 
 
 beforeAll(async () => {
-    await db.sequelize.sync({ force: true });
+    for (let attempt = 0; attempt < 5; attempt++) {
+        try {
+            await db.sequelize.sync({ force: true });
+            break;
+        } catch (err) {
+            if (attempt === 4) throw err;
+            await new Promise(r => setTimeout(r, 2000));
+        }
+    }
     await Player.create({ first_name: "John", last_name: "Doe" });
     await Player.create({ first_name: "Jane", last_name: "Doe" });
 });

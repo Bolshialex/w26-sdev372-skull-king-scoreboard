@@ -5,7 +5,17 @@ import db from "../../src/models/index.js";
 
 const { Player, Stats, PlayerGame, Game } = db;
 
-beforeAll(async () => await db.sequelize.sync({ force: true }));
+beforeAll(async () => {
+  for (let attempt = 0; attempt < 5; attempt++) {
+    try {
+      await db.sequelize.sync({ force: true });
+      return;
+    } catch (err) {
+      if (attempt === 4) throw err;
+      await new Promise(r => setTimeout(r, 2000));
+    }
+  }
+});
 
 describe("GET /players", () => {
   it("returns only active players as an array", async () => {
