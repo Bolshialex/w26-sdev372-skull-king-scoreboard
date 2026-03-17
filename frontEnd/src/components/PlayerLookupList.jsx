@@ -10,7 +10,7 @@ function PlayerLookup() {
 
   const navigate = useNavigate();
 
-  const filteredPlayers = players?.filter((player) =>
+  const filteredPlayers = players.filter((player) =>
     `${player.first_name} ${player.last_name}`
       .toLowerCase()
       .includes(searchTerm.toLowerCase())
