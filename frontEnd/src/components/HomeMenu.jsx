@@ -10,7 +10,7 @@ function HomeForm() {
 
   return (
     <div className="home-menu">
-      <h1>Skull-King ScoreBoard: Test 1</h1>
+      <h1>Skull-King ScoreBoard: Test 2</h1>
       <p>Choose an option</p>
       <div className="home-menu__nav">
         <button className="btn" onClick={() => handleClick("game")}>Start New Game</button>
