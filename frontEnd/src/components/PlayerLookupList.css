@@ -16,27 +16,40 @@
     width: 100%;
     padding: var(--space-sm) var(--space-md);
     background: var(--color-surface);
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--color-border-subtle);
+    border-left: 3px solid var(--color-border);
     border-radius: var(--radius-md);
     color: var(--color-text);
     font-family: var(--font-family);
     font-size: var(--font-size-base);
     cursor: pointer;
-    transition: border-color 0.2s ease;
+    transition: all 0.2s ease;
     text-align: left;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .player-card:hover {
     border-color: var(--color-accent);
+    border-left-color: var(--color-accent);
+    background: var(--color-surface-raised);
+    box-shadow:
+        0 4px 16px rgba(0, 0, 0, 0.4),
+        -3px 0 0 var(--color-accent),
+        0 0 12px rgba(212, 175, 55, 0.1);
+    transform: translateX(4px);
 }
 
 .player-card__label {
     font-size: var(--font-size-sm);
     color: var(--color-text-muted);
     margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
 }
 
 .player-card__name {
     margin: 0;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: var(--font-size-base);
+    color: var(--color-text);
 }

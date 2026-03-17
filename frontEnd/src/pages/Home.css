@@ -4,4 +4,6 @@
     align-items: center;
     justify-content: center;
     min-height: 80vh;
+    position: relative;
+    z-index: 1;
 }

@@ -3,6 +3,8 @@
     max-width: 640px;
     margin: 0 auto;
     padding: var(--space-xl) var(--space-md);
+    position: relative;
+    z-index: 1;
 }
 
 .player-history-page .stats p {
@@ -10,7 +12,7 @@
 }
 
 .player-history-page .stats strong {
-    color: var(--color-text);
+    color: var(--color-accent);
 }
 
 .game-list {
@@ -19,10 +21,27 @@
     gap: var(--space-md);
 }
 
+.game-card {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Faint anchor watermark on each game card */
+.game-card::after {
+    content: '⚓';
+    position: absolute;
+    top: var(--space-sm);
+    right: var(--space-md);
+    font-size: 1.6rem;
+    opacity: 0.08;
+    pointer-events: none;
+    color: var(--color-accent);
+}
+
 .game-card p {
     margin-bottom: var(--space-xs);
 }
 
 .game-card strong {
-    color: var(--color-text);
+    color: var(--color-accent);
 }

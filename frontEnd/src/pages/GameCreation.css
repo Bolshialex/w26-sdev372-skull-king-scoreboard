@@ -3,4 +3,6 @@
     max-width: 540px;
     margin: 0 auto;
     padding: var(--space-xl) var(--space-md);
+    position: relative;
+    z-index: 1;
 }
