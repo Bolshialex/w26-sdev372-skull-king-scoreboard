@@ -26,7 +26,7 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon",
-    "test": ""
+    "test": "vitest run"
   },
   "dependencies": {
     "colors": "^1.4.0",
@@ -36,5 +36,9 @@
     "mysql2": "^3.16.0",
     "nodemon": "^3.1.11",
     "sequelize": "^6.37.7"
+  },
+  "devDependencies": {
+    "supertest": "^7.2.2",
+    "vitest": "^4.0.18"
   }
 }

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./SearchBar.css";
 
 function SearchBar({ placeholder, onSearch, ariaLabel = "Search" }) {
     const [query, setQuery] = useState("");
@@ -11,6 +12,7 @@ function SearchBar({ placeholder, onSearch, ariaLabel = "Search" }) {
 
     return (
         <input
+            className="search-bar"
             type="text"
             placeholder={placeholder}
             value={query}

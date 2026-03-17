@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { usePlayers } from "../context/PlayersContext";
 import SearchBar from "./SearchBar";
+import "./PlayerLookupList.css";
 
 function PlayerLookup() {
   const { players } = usePlayers();
@@ -16,8 +17,8 @@ function PlayerLookup() {
   );
 
   return (
-    <div>
-      <div>
+    <div className="player-list">
+      <div className="player-list__search">
         <SearchBar
           placeholder="Search players..."
           onSearch={setSearchTerm}
@@ -25,11 +26,11 @@ function PlayerLookup() {
         // tells SearchBar to use setSearchTerm when onSearch is called
         />
       </div>
-      <div>
+      <div className="player-list__grid">
         {filteredPlayers.map((player) => (
-          <button key={player.id} onClick={() => navigate(`/players/${player.id}/games`)}>
-            <p>Player</p>
-            <p>
+          <button className="player-card" key={player.id} onClick={() => navigate(`/players/${player.id}/games`)}>
+            <p className="player-card__label">Player</p>
+            <p className="player-card__name">
               {player.first_name} {player.last_name}
             </p>
           </button>

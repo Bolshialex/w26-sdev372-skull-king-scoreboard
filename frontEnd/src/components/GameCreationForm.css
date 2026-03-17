@@ -1,0 +1,25 @@
+/* Game Creation Form Component */
+.game-form .player-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.game-form .player-row select {
+    flex: 1;
+}
+
+.game-form .trash-icon {
+    color: var(--color-danger);
+    cursor: pointer;
+    font-size: var(--font-size-lg);
+    transition: opacity 0.2s ease;
+}
+
+.game-form .trash-icon:hover {
+    opacity: 0.7;
+}
+
+.game-form .form-btn-container {
+    margin-bottom: var(--space-md);
+}

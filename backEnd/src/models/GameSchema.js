@@ -8,7 +8,7 @@ const Game = sequelize.define("game", {
     type: DataTypes.INTEGER,
     autoIncrement: true,
   },
-  data_played: {
+  date_played: {
     type: DataTypes.DATE,
     defaultValue: new Date(),
   },

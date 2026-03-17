@@ -7,10 +7,10 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      interval: 10s
+      test: ["CMD", "mysql", "-uroot", "-pskc-Dan-Al123!@#", "skull_king", "-e", "SELECT 1"]
+      interval: 5s
       timeout: 5s
-      retries: 5
+      retries: 10
 
   backend:
     build: ./backEnd
@@ -28,9 +28,47 @@ services:
   frontend:
     build: ./frontEnd
     ports:
-      - "3000:80"
+      - "80:80"
     depends_on:
       - backend
 
+  db-test:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: 'skc-Dan-Al123!@#'
+      MYSQL_DATABASE: skull_king_test
+    volumes:
+      - db_test_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysql", "-uroot", "-pskc-Dan-Al123!@#", "skull_king_test", "-e", "SELECT 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  test-runner:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    volumes:
+      - ./frontEnd/tests:/app/frontEnd/tests
+      - ./backEnd/tests:/app/backEnd/tests
+    environment:
+      DB_HOST: db-test
+      DB_PORT: 3306
+      DB_USERNAME: root
+      DB_PASSWORD: 'skc-Dan-Al123!@#'
+      DB_DATABASE: skull_king_test
+      NODE_ENV: test
+    depends_on:
+      db-test:
+        condition: service_healthy
+      backend:
+        condition: service_started
+      frontend:
+        condition: service_started
+    command: >
+      sh -c "cd frontEnd && npm run e2e && npm test && cd ../backEnd && npm test"
+
 volumes:
   db_data:
+  db_test_data:
