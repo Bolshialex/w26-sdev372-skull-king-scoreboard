@@ -105,7 +105,7 @@ describe("POST /api/game/:game_id/:round_id", () => {
     expect(res.body.newPlayerRoundInfo[2].score).toBe(40);
   });
 
-  it("returns 500 if round not found", async () => {
+  it("returns 404 if round not found", async () => {
     const game = await Game.create({ players: [1, 2], rounds_needed: 5 });
     const res = await request(app)
       .post(`/api/game/${game.id}/99999`)
@@ -113,7 +113,6 @@ describe("POST /api/game/:game_id/:round_id", () => {
         1: { bid: 2, tricks_won: 2, bonus_points: 10, round_score: 20 },
         2: { bid: 3, tricks_won: 1, bonus_points: 5, round_score: 15 },
       });
-
-    expect(res.status).toBe(500);
+    expect(res.status).toBe(404);
   });
 });
