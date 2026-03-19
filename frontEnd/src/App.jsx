@@ -4,7 +4,9 @@ import PlayerCreation from "./pages/PlayerCreation";
 import PlayerLookup from "./pages/PlayerLookup";
 import GameCreation from "./pages/GameCreation";
 import PlayerGameHistory from "./pages/PlayerGameHistory";
-import { PlayersProvider } from "./context/PlayersContext"
+import Round from "./pages/Round";
+import { PlayersProvider } from "./context/PlayersContext";
+import GameEndResults from "./pages/GameEndResults";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route path="/players" element={<PlayerLookup />} />
           <Route path="/players/:id/games" element={<PlayerGameHistory />} />
           <Route path="/game" element={<GameCreation />} />
+          <Route path="/round/:id" element={<Round />} />
+          <Route path="/results/:roundId" element={<GameEndResults />} />
         </Routes>
       </Router>
     </PlayersProvider>
