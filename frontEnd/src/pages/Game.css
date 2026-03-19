@@ -1,8 +1,14 @@
 /* Game Page */
+.game-page {
+    position: relative;
+    z-index: 1;
+}
+
 .game-page .title {
     margin-bottom: var(--space-xs);
 }
 
 .game-page .title__info {
     color: var(--color-text-muted);
+    font-style: italic;
 }

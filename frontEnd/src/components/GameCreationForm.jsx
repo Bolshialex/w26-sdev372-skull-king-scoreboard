@@ -7,7 +7,10 @@ import "./GameCreationForm.css";
 
 function GameCreationForm() {
   const { players } = usePlayers();
-  const [formFields, setFormFields] = useState([{ playerId: "" }, { playerId: "" }]);
+  const [formFields, setFormFields] = useState([
+    { playerId: "" },
+    { playerId: "" },
+  ]);
   const [playerCount, setPlayerCount] = useState(2);
   const [numRounds, setNumRounds] = useState(1);
   const navigate = useNavigate();
@@ -18,8 +21,8 @@ function GameCreationForm() {
     setFormFields(data);
   };
   const handleAddPlayer = () => {
-      setPlayerCount(playerCount + 1);
-      setFormFields([...formFields, { playerId: "" }]);
+    setPlayerCount(playerCount + 1);
+    setFormFields([...formFields, { playerId: "" }]);
   };
 
   const handleRoundChange = (e) => {
@@ -27,9 +30,9 @@ function GameCreationForm() {
   };
 
   const handleDeleteBtn = (index) => {
-      setPlayerCount(playerCount - 1);
-      const data = formFields.filter((_, i) => i !== index);
-      setFormFields(data);
+    setPlayerCount(playerCount - 1);
+    const data = formFields.filter((_, i) => i !== index);
+    setFormFields(data);
   };
 
   const handleFormSubmit = async (e) => {
@@ -49,7 +52,12 @@ function GameCreationForm() {
       console.log(res);
 
       if (res.message == "Game Created") {
-        navigate(`/`);
+        navigate(`/round/${res.round_info.id}`, {
+          state: {
+            ...res,
+            prev: 0,
+          },
+        });
       }
     } catch (error) {
       console.error("Failed to create game:", error);
@@ -91,7 +99,10 @@ function GameCreationForm() {
               ))}
             </select>
             {index > 1 ? (
-              <FaRegTrashCan className="trash-icon" onClick={() => handleDeleteBtn(index)} />
+              <FaRegTrashCan
+                className="trash-icon"
+                onClick={() => handleDeleteBtn(index)}
+              />
             ) : (
               <></>
             )}
@@ -102,7 +113,11 @@ function GameCreationForm() {
         {playerCount > 8 ? (
           <></>
         ) : (
-          <button className="btn btn--small" type="button" onClick={handleAddPlayer}>
+          <button
+            className="btn btn--small"
+            type="button"
+            onClick={handleAddPlayer}
+          >
             +
           </button>
         )}

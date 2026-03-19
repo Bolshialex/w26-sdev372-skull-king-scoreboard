@@ -1,0 +1,74 @@
+.scoreboard-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 125px);
+  padding: var(--space-lg);
+}
+
+.scoreboard-card {
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  background: rgba(17, 34, 64, 0.95);
+  backdrop-filter: blur(4px);
+}
+
+.score-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+}
+
+.score-table th {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  color: var(--color-text-muted);
+  border-bottom: 2px solid var(--color-border);
+  padding: var(--space-sm);
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+.score-table td {
+  padding: var(--space-md) var(--space-sm);
+  border-bottom: 1px solid var(--color-border-subtle);
+  font-size: var(--font-size-lg);
+  vertical-align: middle;
+}
+
+.score-table tr:last-child td {
+  border-bottom: none;
+}
+
+.player-name {
+  font-weight: 600;
+  color: var(--color-text);
+  text-align: left;
+}
+
+.score {
+  color: var(--color-accent);
+  font-size: var(--font-size-xl);
+}
+
+.winner-row td {
+  background: rgba(212, 175, 55, 0.1);
+  color: var(--color-accent);
+}
+
+.winner-row .player-name {
+  color: var(--color-accent);
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+}
+
+.winner-row .score {
+  color: #fff;
+  text-shadow: 0 0 12px var(--color-accent);
+  font-size: var(--font-size-xxl);
+}
+
+.scoreboard-actions {
+  margin-top: var(--space-md);
+  padding-bottom: var(--space-sm);
+}
